@@ -1,3 +1,5 @@
+# python pagerank.py relations.csv
+
 import csv
 import sys
 import networkx as nx
@@ -18,9 +20,15 @@ def print_graph(G, output_name):
 
 if __name__ == "__main__":
 	# G = nx.read_edgelist(sys.argv[1], delimiter='	')
-	G = nx.read_edgelist(sys.argv[1], delimiter=';', data=(('relation_name',str),))
+	G = nx.read_edgelist(sys.argv[1], delimiter=';', data=(('relation_name',str),), create_using=nx.MultiDiGraph())
 	G.edges(data=True)
 	print_graph(G, 'graph.png')
-	pr = nx.pagerank(G, 0.9)
-	for key, value in sorted(pr.iteritems(), key=lambda (k,v): (v,k), reverse=True):
+	# pr = nx.pagerank(G, 0.9)
+	# for key, value in sorted(pr.iteritems(), key=lambda (k,v): (v,k), reverse=True):
+	# 	print "%s: %s" % (key, value)
+
+	for key, value in sorted(G.out_degree(), key=lambda (k,v): (v,k), reverse=True):
 		print "%s: %s" % (key, value)
+	# for key, value in sorted(G.in_degree(), key=lambda (k,v): (v,k), reverse=True):
+	# 	print "%s: %s" % (key, value)
+	# print(G.degree())
