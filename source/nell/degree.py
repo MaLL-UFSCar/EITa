@@ -2,7 +2,7 @@ import csv
 import sys
 import numpy as np
 
-interest_category = ['animal', 'country', 'city', 'movie', 'person', 'writer', 'actor', 'sport']
+interest_category = ['actor', 'animal', 'city', 'country', 'movie', 'person', 'sport', 'writer']
 
 for category in interest_category:
 	out_degree_dict = {}
@@ -24,10 +24,14 @@ for category in interest_category:
 	print "out degree"
 	print "elements: %s" % len(out_degree_dict)
 	if out_degree_dict:
-		print "mean: %s" % np.mean(out_degree_dict.values())
+		print "mean: %s" % round(float(np.mean(out_degree_dict.values())), 2)
 		print "sd: %s" % round(float(np.std(out_degree_dict.values())), 2)
-	print "in degree"
-	print "elements: %s" % len(in_degree_dict)
-	if in_degree_dict:
-		print "mean: %s" % np.mean(in_degree_dict.values())
-		print "sd: %s" % round(float(np.std(in_degree_dict.values())), 2)
+	# print "in degree"
+	# print "elements: %s" % len(in_degree_dict)
+	# if in_degree_dict:
+	# 	print "mean: %s" % np.mean(in_degree_dict.values())
+	# 	print "sd: %s" % round(float(np.std(in_degree_dict.values())), 2)
+	# print "degree"
+	# print "elements: %s" % len(in_degree_dict) + len(out_degree_dict)
+	# print "mean: %s" % np.mean(in_degree_dict.values() + out_degree_dict.values())
+	# print "sd: %s" % round(float(np.std(in_degree_dict.values() + out_degree_dict.values())), 2)
